@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ab9959c9.css",
-    "main.js": "/static/js/main.333f812d.js",
+    "main.js": "/static/js/main.1510bd4a.js",
     "static/media/everyday.jpg": "/static/media/everyday.795fd0e32e4e461e5caf.jpg",
     "static/media/education.jpg": "/static/media/education.a019315b1f99af29c3a9.jpg",
     "static/media/style.jpg": "/static/media/style.a8db76e192fc69d53371.jpg",
@@ -13,10 +13,10 @@
     "static/media/Bookmark.png": "/static/media/Bookmark.ee51235248efcc65333c.png",
     "index.html": "/index.html",
     "main.ab9959c9.css.map": "/static/css/main.ab9959c9.css.map",
-    "main.333f812d.js.map": "/static/js/main.333f812d.js.map"
+    "main.1510bd4a.js.map": "/static/js/main.1510bd4a.js.map"
   },
   "entrypoints": [
     "static/css/main.ab9959c9.css",
-    "static/js/main.333f812d.js"
+    "static/js/main.1510bd4a.js"
   ]
 }

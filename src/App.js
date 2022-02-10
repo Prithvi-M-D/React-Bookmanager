@@ -1,11 +1,11 @@
 import AddbookManager from "./pages/addbookmark";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from './pages/dashboard';
 import Fav from './pages/favourites';
 function App() {
   return (
     <Router>
-      <Switch>
+      <Routes>
         <Route exact path="/">
           <AddbookManager/> 
         </Route>
@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/favourites">
           <Fav/>
         </Route>
-      </Switch>
+      </Routes>
     </Router>
   );
 }
