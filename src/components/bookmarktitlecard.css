@@ -1,0 +1,12 @@
+.cardholder{
+    display:inline-block;
+    padding-top: 200px;
+    padding-right:100px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+
+}
+.images{
+    max-width:100%;
+    max-height:100%;
+}

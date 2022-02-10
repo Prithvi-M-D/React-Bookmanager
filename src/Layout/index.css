@@ -1,0 +1,24 @@
+.wrapper {
+    justify-content: space-between;
+    padding-right: 1000px;
+  }
+  
+  .container {
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    background-color: darkgrey;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgb(218, 216, 216);
+    position: fixed;
+  }
+  .image {
+    /* border-radius: 20%; */
+    max-width: 800px;
+    max-height: 800px;
+  }
+  
+  .button{
+      max-width: 80px;
+      max-height: 40px;
+  }
