@@ -10,7 +10,7 @@ const Side = () => {
           DASHBOARD
         </Button>
 
-        <Button>ADD BOOKMARK</Button>
+        <Button component={Link} to="/">ADD BOOKMARK</Button>
 
         <Button component={Link} to="/favourites">
           FAVOURITES

@@ -89,7 +89,7 @@ export default function AddbookMark() {
                       label="Catgory"
                       onChange={handleChange}
                     >
-                      <MenuItem value={"social"}>Social!!!</MenuItem>
+                      <MenuItem value={"social"}>Social</MenuItem>
                       <MenuItem value={"education"}>Education</MenuItem>
                       <MenuItem value={"office"}>Office</MenuItem>
                       <MenuItem value={"music"}>Style</MenuItem>
