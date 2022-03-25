@@ -1,27 +1,23 @@
-.cardholder{
-    display:flex;
-    align-items: column;
-    padding-top: 50px;
-    padding-right:50px;
-    padding-bottom: 50px;
-    padding-left: 50px;
-
-}
-.cardholder:first-child {
-    padding-top: 200px;
-}
-.cardholder:nth-child(2) {
-    padding-top: 200px;
-}
-.cardholder:nth-child(3) {
-    padding-top: 200px;
-}
-.cardholder:nth-child(4) {
-    padding-top: 200px;
-}
-.images{
-    width:  100px;
-    height: 100px;
-    object-fit: cover;
+.cardholder {
+  display: flex;
+  align-items: column;
+  padding: 30px;
+  margin-left: 25px;
 }
 
+.images {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  margin: 10px;
+}
+.images:hover{
+    cursor: pointer;
+}
+
+.cardheaders {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  color: rgb(18, 78, 97);
+}

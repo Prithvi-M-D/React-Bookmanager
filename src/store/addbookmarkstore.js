@@ -12,26 +12,32 @@ const addbookmark = createSlice({
     news: [],
     sports: [],
     style: [],
+    favourite: [],
   },
   reducers: {
+    DeleteBookmark(state, action) {
+      const id = action.payload.id;
+      const category = action.payload.category;
+      state[category] = state[category].filter((item) => item.id !== id);
+    },
+
     AddBookmark(state, action) {
       const newBookmark = action.payload;
-
+      console.log(action.payload);
       switch (newBookmark.category) {
         case "social":
           state.social.push({
-            scid: newBookmark.id,
-            sccategory: newBookmark.category,
-            sctitle: newBookmark.title,
-            scname: newBookmark.name,
-            scurl: newBookmark.url,
+            id: newBookmark.id,
+            category: newBookmark.category,
+            name: newBookmark.name,
+            url: newBookmark.url,
           });
           break;
         case "education":
           state.education.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
+
             name: newBookmark.name,
             url: newBookmark.url,
           });
@@ -40,7 +46,7 @@ const addbookmark = createSlice({
           state.music.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
+
             name: newBookmark.name,
             url: newBookmark.url,
           });
@@ -50,7 +56,7 @@ const addbookmark = createSlice({
           state.office.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
+
             name: newBookmark.name,
             url: newBookmark.url,
           });
@@ -60,7 +66,7 @@ const addbookmark = createSlice({
           state.everyday.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
+
             name: newBookmark.name,
             url: newBookmark.url,
           });
@@ -70,17 +76,17 @@ const addbookmark = createSlice({
           state.entertainment.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
             name: newBookmark.name,
             url: newBookmark.url,
           });
+          console.log(state.entertainment);
           break;
 
         case "news":
           state.news.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
+
             name: newBookmark.name,
             url: newBookmark.url,
           });
@@ -90,7 +96,7 @@ const addbookmark = createSlice({
           state.sports.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
+
             name: newBookmark.name,
             url: newBookmark.url,
           });
@@ -100,17 +106,25 @@ const addbookmark = createSlice({
           state.style.push({
             id: newBookmark.id,
             category: newBookmark.category,
-            title: newBookmark.title,
+
             name: newBookmark.name,
             url: newBookmark.url,
           });
           break;
-          
+
         default:
           return;
       }
     },
-    
+
+    Favourite(state, action) {
+      state.favourite.push({
+        url: action.payload.url,
+        name: action.payload.name,
+      });
+      console.log(action);
+      console.log(state.favourite);
+    },
   },
 });
 

@@ -1,18 +1,16 @@
 import { useState } from "react";
-import './listdisplay.css';
+import * as React from "react";
+import { useDispatch } from "react-redux";
+import "./listdisplay.css";
+import { addActions } from "../store/addbookmarkstore";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
-// import { addActions } from "../store/addbookmarkstore";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import ContentCutRoundedIcon from "@mui/icons-material/ContentCutRounded";
+import { makeStyles } from '@material-ui/core/styles';
 
 const style = {
   position: "absolute",
@@ -26,17 +24,46 @@ const style = {
   p: 4,
 };
 
+const useStyles = makeStyles(theme => ({
+  dialogPaper: {
+     
+      top : '30%',
+      width:'200px'
+  },
+}));
+
 const ListDisplay = (props) => {
-  // const dispatch = useDispatch();
-  const isLoggedIn = props.displaystatus;
+
+
+  const dispatch = useDispatch();
+  const isClicked = props.displaystatus;
+
   const [open, setOpen] = useState(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(true);
+    props.setDisplay(false);
+  };
+
   const payload = props.category;
   const bookmark = useSelector((state) => state.add[payload]);
-  if (isLoggedIn) {
+
+  function deleteHandler(id, category) {
+    const removaldata = { id, category };
+    dispatch(addActions.DeleteBookmark(removaldata));
+    console.log('deere');
+  }
+
+  const favouriteHandler = (url, name) => {
+    const fav = {url, name};
+    dispatch(addActions.Favourite(fav));
+  };
+  
+
+  if (isClicked) {
     return (
       <div>
-        <Modal
+        <Modal 
+          
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
           open={open}
@@ -44,48 +71,84 @@ const ListDisplay = (props) => {
           closeAfterTransition
           BackdropComponent={Backdrop}
           BackdropProps={{
-            timeout: 500,
+            timeout: 10,
           }}
         >
           <Fade in={open}>
-            <Box sx={style}>
-              <Typography
-                id="transition-modal-title"
-                variant="h6"
-                component="h2"
+            <Box sx={style} classes={{ paper : useStyles.dialogPaper}}>
+              <p
+                style={{
+                  textAlign: "center",
+                  color: "rgb(18, 78, 97)",
+                  textTransform: "uppercase",
+                }}
               >
                 {payload}
-              </Typography>
+              </p>
               {bookmark.map((item) => (
-                <>
-                  <List
-                    sx={{
-                      width: "100%",
-                      maxWidth: 360,
-                      bgcolor: "background.paper",
-                    }}
-                    aria-label="contacts"
-                  >
-                    <ListItem disablePadding>
-                    <div className="sep">
-                      <ListItemButton>
-                        <ListItemText>Name={item.name} </ListItemText>
-                        <div className="nameseperator">
-                        <ListItemIcon>
-                          <ContentCutRoundedIcon />
-                          <Typography
-                            id="transition-modal-description"
-                            sx={{ mt: 2 }}
-                          >
-                            URL: {item.url}
-                          </Typography>
-                        </ListItemIcon>
-                        </div>
-                      </ListItemButton>
+                <List
+                  sx={{
+                    width: "100%",
+                    maxWidth: 360,
+                    bgcolor: "background.paper",
+                  }}
+                  aria-label="contacts"
+                >
+                  <div className="nameseperator">
+                    <div style={{ margin: "auto", marginLeft: "10px" }}>
+                      <ListItemIcon>
+                        <a
+                          target="_blank"
+                          href={"http://" + item.url}
+                          rel="noreferrer"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <p className="linkname">{item.name}</p>
+                          {console.log(item.name)}
+                        </a>
+                      </ListItemIcon>
                     </div>
-                    </ListItem>
-                  </List>
-                </>
+                    <div className="sep">
+                      <img
+                        src="../images/copy.png"
+                        alt="copy"
+                        onClick={() => {
+                          navigator.clipboard.writeText(item.url);
+                        }}
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          cursor: "pointer",
+                          padding: "5px",
+                        }}
+                      />
+
+                      <img
+                        src="../images/delete.png"
+                        alt="delete"
+                        onClick={() => deleteHandler(item.id, item.category)}
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          cursor: "pointer",
+                          padding: "5px",
+                        }}
+                      />
+
+                      <img
+                        src="../images/love.png"
+                        alt="fav"
+                        onClick={() => favouriteHandler(item.url, item.name)}
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          cursor: "pointer",
+                          padding: "5px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </List>
               ))}
             </Box>
           </Fade>

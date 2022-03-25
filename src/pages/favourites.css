@@ -1,0 +1,28 @@
+.fav-card {
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+p {
+  padding: 10px;
+}
+.fav-svg {
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  width: 300px;
+  margin-left: 200px;
+}
+
+@media screen and (max-Width:500px) {
+    .fav-svg{
+        display: none;
+        /* flex-direction: column; */
+    }
+}

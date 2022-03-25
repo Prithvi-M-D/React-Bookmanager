@@ -1,20 +1,22 @@
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import './index.css';
+import "./index.css";
+import { Link } from "react-router-dom";
 
-const IndexLayout=()=>{
-    return(
-        <div class="container">
-        <div className="wrapper">
-          <img className="image" src={require("../Bookmark.png")} alt="Company logo"></img>
-        </div>
-        <Stack direction="row" spacing={2}>
-          <Button variant="contained" href="#text-buttons" className="button">
-            CONTACT
-          </Button>
-        </Stack>
-      </div>
+const IndexLayout = () => {
+  return (
+    <div class="header-container">
+      <Button component={Link} to="/dashboard">
+        Your BookMark
+      </Button>
 
-    );
-}
+      <Button component={Link} to="/">
+        Add Bookmark
+      </Button>
+
+      <Button component={Link} to="/favourites">
+        Favourites
+      </Button>
+    </div>
+  );
+};
 export default IndexLayout;

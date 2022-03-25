@@ -1,6 +1,29 @@
-.nameseperator{
-    padding-left:100px;
+.nameseperator {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
 }
-.sep{
-    margin-bottom:5px;
+.linkname{
+    text-decoration: none;
 }
+.sep {
+  margin: auto;
+  margin-right: 10px;
+}
+.delete {
+  height: "10px";
+  width: "10px";
+}
+.delete:hover {
+  cursor: pointer;
+}
+
+.copy {
+  height: "10px";
+  width: "10px";
+  padding-right: "100px";
+}
+.copy:hover {
+  cursor: pointer;
+}
+
